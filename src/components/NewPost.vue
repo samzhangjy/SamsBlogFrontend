@@ -47,14 +47,14 @@ export default {
     }
   },
   methods: {
-    newPost: function () {
+    newPost: async function () {
       if (!this.$store.state.isLoggedIn) {
         this.error = '请登录后再来添加博客'
       } else {
         const HTMLContent = this.$refs.mEditor.d_render
         const markdownContent = this.value
         const tags = this.tags
-        PostService.addPost({
+        await PostService.addPost({
           title: this.title,
           markdownContent: markdownContent,
           HTMLContent: HTMLContent,
@@ -62,8 +62,9 @@ export default {
           description: this.description,
           imageURL: this.imageURL,
           tags: tags
+        }).then((value) => {
+          this.$router.push('/')
         })
-        this.$router.push('/')
       }
     }
   },

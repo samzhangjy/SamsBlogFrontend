@@ -9,6 +9,11 @@
       <v-btn v-if="$store.state.isLoggedIn" @click="$router.push('/links/add')" outlined>
         添加友链
       </v-btn>
+      <div v-if="loading">
+        <div v-for="n in 3" :key="n">
+          <v-skeleton-loader type="list-item-two-line"></v-skeleton-loader>
+        </div>
+      </div>
       <v-list-item-group>
         <v-list-item two-line v-for="(link, index) in links" :key="index">
           <v-list-item-content>
@@ -44,7 +49,8 @@ export default {
   name: 'link',
   data: function () {
     return {
-      links: []
+      links: [],
+      loading: true
     }
   },
   methods: {
@@ -54,8 +60,10 @@ export default {
     }
   },
   created: async function () {
-    const links = await LinkService.getAllLinks()
-    this.links = links.data.data
+    await LinkService.getAllLinks().then((value) => {
+      this.links = value.data.data
+      this.loading = false
+    })
   }
 }
 </script>

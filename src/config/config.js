@@ -1,4 +1,3 @@
 export default {
-  serverURL: 'https://samsblogbackend.herokuapp.com/',
-  serverToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiIxN2M5MmNhMy05ZDcxLTExZWEtODgxYy1hMjM0MWE5N2I3ODIiLCJhdWQiOiJLaW50b0h1YkdhdGV3YXkiLCJleHAiOjE1OTE1MDE1NjQsImlhdCI6MTU5MDI5MTk2NCwiaXNzIjoiS2ludG9IdWJHYXRld2F5Iiwic3ViIjoie1wic2Vzc2lvbklkXCI6XCIxN2M5MmNhMy05ZDcxLTExZWEtODgxYy1hMjM0MWE5N2I3ODJcIn0ifQ.lhw0aSkapF52F8fldE0JY_2dtqfaMgYK8cMCI2ivWCY'
+  serverURL: 'https://samsblogbackend.herokuapp.com/'
 }

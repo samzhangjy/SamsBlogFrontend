@@ -15,6 +15,11 @@
     <v-divider></v-divider>
     <br>
     <h2>最新文章</h2>
+    <v-row v-if="loading">
+      <v-col v-for="n in 4" :key="n" sm="4">
+        <v-skeleton-loader :loading="!loaded" type="card" transition="scale-transition"></v-skeleton-loader>
+      </v-col>
+    </v-row>
     <posts :posts="posts.data"></posts>
   </v-container>
 </template>
@@ -27,12 +32,16 @@ export default {
   name: 'Index',
   data: function () {
     return {
-      posts: []
+      posts: [],
+      loaded: false,
+      loading: true
     }
   },
   created: async function () {
     await PostService.getLatestPosts().then((value) => {
+      this.loaded = true
       this.posts = value.data
+      this.loading = false
     })
   },
   components: {

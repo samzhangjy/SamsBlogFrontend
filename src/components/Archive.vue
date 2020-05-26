@@ -6,6 +6,23 @@
       <br>
       <v-divider></v-divider>
       <br>
+      <v-timeline v-if="loading">
+        <v-timeline-item v-for="n in 4" :key="n" color="primary" large>
+          <template v-slot:opposite>
+            <v-skeleton-loader type="text"></v-skeleton-loader>
+          </template>
+          <v-card>
+            <v-card-title>
+              <v-skeleton-loader type="text"></v-skeleton-loader>
+            </v-card-title>
+            <v-card-text>
+              <v-skeleton-loader type="sentences"></v-skeleton-loader>
+              <br><br>
+              <v-skeleton-loader type="chip"></v-skeleton-loader>
+            </v-card-text>
+          </v-card>
+        </v-timeline-item>
+      </v-timeline>
       <v-timeline>
         <v-timeline-item v-for="(post, index) in posts" :key="index" color="primary" large>
           <template v-slot:opposite>
@@ -34,7 +51,8 @@ export default {
   name: 'post',
   data: function () {
     return {
-      posts: []
+      posts: [],
+      loading: true
     }
   },
   methods: {
@@ -49,6 +67,7 @@ export default {
   },
   created: async function () {
     await PostService.getAllPosts().then((value) => {
+      this.loading = false
       this.posts = value.data.data
     })
   }

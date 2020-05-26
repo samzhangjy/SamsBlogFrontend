@@ -6,6 +6,11 @@
       <br>
       <v-divider></v-divider>
       <br>
+      <div v-if="loading">
+        <div v-for="n in 3" :key="n">
+          <v-skeleton-loader type="list-item-two-line"></v-skeleton-loader>
+        </div>
+      </div>
       <v-list rounded>
         <v-list-item-group>
           <v-list-item v-for="(tag, index) in tags" :key="index" @click="$router.push(`/tags/${tag.name}`)">
@@ -31,12 +36,15 @@ export default {
   name: 'tag',
   data: function () {
     return {
-      tags: []
+      tags: [],
+      loading: true
     }
   },
   created: async function () {
-    const tags = await TagService.getAllTags()
-    this.tags = tags.data.data
+    await TagService.getAllTags().then((value) => {
+      this.tags = value.data.data
+      this.loading = false
+    })
   }
 }
 </script>
