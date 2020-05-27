@@ -2,6 +2,7 @@
   <div>
     <v-skeleton-loader v-if="loading === true" type="image, image"></v-skeleton-loader>
     <v-img height="400" :src="post.imageURL" v-show="loaded" class="grey lighten-3">
+      <v-overlay absolute>
       <v-container class="text-center" dark>
         <v-row justify="center" v-if="loadingContent">
           <v-col class="text-center center">
@@ -51,6 +52,7 @@
           </v-dialog>
         </v-container>
       </v-container>
+      </v-overlay>
     </v-img>
     <v-container>
       <br>
