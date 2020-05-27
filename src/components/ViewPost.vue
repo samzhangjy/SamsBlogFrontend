@@ -62,7 +62,7 @@
       </div>
       <div class="markdown-body" v-html="post.HTMLContent" :class="extraClass()" v-highlight></div>
       <br>
-      <vue-disqus shortname="samstechblog" identifier="Sam's Blog" url="http://samstechblog.disqus.com"></vue-disqus>
+      <vue-disqus v-if="!loadingContent" shortname="samstechblog" :identifier="post.id" :url="getURL(post.id)"></vue-disqus>
 
     </v-container>
   </div>
@@ -111,6 +111,9 @@ export default {
       PostService.deletePost(postId)
       this.dialog = false
       this.$router.push('/')
+    },
+    getURL: function (postId) {
+      return `https://samzhangjy.github.io/${postId}`
     }
   }
 }
