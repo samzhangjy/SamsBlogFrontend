@@ -2,7 +2,6 @@ echo "Enter your commit message:"
 read message
 git add -A
 git commit -m "$message"
-read hi
 git push https://github.com/samzhangjy/SamsBlogFrontend.git master
 npm run build
 cd dist
