@@ -10,6 +10,7 @@ import VueCookies from 'vue-cookies'
 import 'highlight.js/styles/atom-one-dark.css'
 import Highlight from 'vue-markdown-highlight'
 import VueMoment from 'vue-moment'
+import VueDisqus from 'vue-disqus'
 
 const moment = require('moment')
 require('moment/locale/zh-cn')
@@ -18,6 +19,7 @@ Vue.use(Highlight)
 Vue.use(VueCookies)
 Vue.use(mavonEditor)
 Vue.use(VueMoment, { moment })
+Vue.use(VueDisqus)
 
 Vue.$cookies.config('7d')
 

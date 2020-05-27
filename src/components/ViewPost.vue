@@ -62,6 +62,8 @@
       </div>
       <div class="markdown-body" v-html="post.HTMLContent" :class="extraClass()"></div>
       <br>
+      <vue-disqus shortname="samstechblog" identifier="Sam's Blog" url="http://samstechblog.disqus.com"></vue-disqus>
+
     </v-container>
   </div>
 </template>
