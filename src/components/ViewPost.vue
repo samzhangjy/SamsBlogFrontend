@@ -60,7 +60,7 @@
           <br>
         </div>
       </div>
-      <div class="markdown-body" v-html="post.HTMLContent" :class="extraClass()"></div>
+      <div class="markdown-body" v-html="post.HTMLContent" :class="extraClass()" v-highlight></div>
       <br>
       <vue-disqus shortname="samstechblog" identifier="Sam's Blog" url="http://samstechblog.disqus.com"></vue-disqus>
 
